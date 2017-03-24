@@ -1,0 +1,18 @@
+_index:
+    path:  /
+    defaults: { _controller: MultiservicesArxisBundle:Arxis:index }
+
+#_arxis_secured:
+#    resource: "@MultiservicesArxisBundle/Controller/SecuredController.php"
+#    type:     annotation
+
+#_arxis:
+#    resource: "@MultiservicesArxisBundle/Controller/ArxisController.php"
+#    type:     annotation
+#    prefix:    /arxis
+
+    
+MultiservicesAnnotations:
+   resource: "@MultiservicesArxisBundle/Controller/"
+   type:     annotation
+   prefix:   /

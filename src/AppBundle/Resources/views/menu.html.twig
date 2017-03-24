@@ -1,0 +1,221 @@
+<ul>
+					<li class="">
+						<a href="{{ path('inicio') }}" title="Panel"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Inicio</span></a>
+					</li>
+                                        <li>
+                                                            <a href="#"><i class="fa fa-lg fa-fw fa-users"></i> <span class="menu-item-parent">Clientes</span></a>
+                                                            <ul>
+                                                                <li>
+                                                                            <a href="{{ path('clientes') }}">
+                                                                        <i class="fa fa-user"></i>Listar Clientes</a>
+                                                                </li>         
+                                                                <li>
+                                                                    <a href="{{ path('retirocliente') }}">
+                                                                    <i class="fa"></i>Retirar Cliente</a>
+                                                                </li>  
+                                                            </ul>
+
+                                        </li>
+                                        <li>
+						<a href="#"><i class="fa fa-lg fa-fw flaticon-world91"></i><span class="menu-item-parent">Internet</span></a>
+						<ul>
+                                                    <li>
+                                                            <a href="{{ path('contratos') }}"><i class="fa fa-lg fa-fw fa-edit"></i> <span class="menu-item-parent">Contratos</span></a>
+                                                    </li>
+                                                    <li>
+                                                            <a href="{{ path('change_equipo') }}"><i class="fa fa-lg fa-fw flaticon-settings41"></i> <span class="menu-item-parent">Cambiar Equipo</span></a>
+                                                    </li>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                </ul>
+                                        </li>
+                                        {% if is_granted('ROLE_INVENTARIO') %}
+                                        <li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-dropbox"></i> <span class="menu-item-parent">Inventario</span></a>
+						<ul>
+                                                        
+                                                       
+                                                        <li>
+        						<a href="{{ path('articulos') }}">
+                                                            <i class="fa fa-table"></i>Productos</a>
+                                                            <ul>
+                                                                <li>
+                                                                <a href="{{ path('articulos') }}">
+                                                                    <i></i>Todos los productos</a>
+                                                                </li> 
+                                                                <li>
+                                                                <a href="{{ path('articulos_new') }}">
+                                                                    <i class="fa fa-fw fa-plus"></i>Nuevo producto</a>
+                                                                </li> 
+                                                                
+                                                                
+                                                                <li>
+                                                                <a href="{{ path('atributos') }}">
+                                                                    <i></i>Atributos</a>
+                                                                </li> 
+                                                             </ul>   
+                                                        </li>
+                                                        
+							
+						</ul>
+					</li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_INVENTARIO') %}
+                                        <li>
+                                                                <a href="{{ path('articulosdetalle') }}">
+                                                                    <i class="fa fa-fw fa-wrench"></i>Equipos</a>
+                                                                    <ul>
+                                                                       <li>
+                                                                        <a href="{{ path('articulosdetalle') }}">
+                                                                            <i></i>Listado de Equipos</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="{{ path('articulosdetalleclientehistorial') }}">
+                                                                        <i class="fa fa-clock-o"></i>Historial Equipos</a>
+                                                                        </li>         
+                                                                       
+                                                                    </ul>   
+                                                                </li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_FACTURACION') %}                        
+                                        <li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-file-text"></i> <span class="menu-item-parent">Facturación</span></a>
+						<ul>
+                                                        
+                                                        <li>
+        						<a href="{{ path('facturasp') }}">
+                                                            <i class="fa fa-shopping-cart"></i>Compras</a>
+                                                        </li>
+                                                        {% if is_granted('ROLE_ADMIN') %}
+                                                        <li>
+        						<a href="{{ path('pedidos') }}">
+                                                            <i class="glyphicon glyphicon-check"></i>Ventas</a>
+                                                        </li>
+                                                        {% endif%}
+                                                       <li>
+                                                                    <a href="{{ path('proveedores') }}">
+                                                                        <i class="fa fa-group"></i>Proveedores</a>
+                                                        </li>
+                                                        
+							
+						</ul>
+					</li>
+                                       {% endif %}
+                                       {% if is_granted('ROLE_INFORMES') %}
+                                        <li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Informes</span></a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="#"><i class="fa fa-lg fa-fw fa-legal"></i> <span class="menu-item-parent">Supertel SVA</span></a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"><span class="menu-item-parent">FORMULARIOS DE CALIDAD</span></a>
+                                                            <ul>
+                                                                <li>
+                                                                <a href="{{path("inf_relacionclientes")}}">
+                                                                <i class="fa"></i>1 <!--Relación con el cliente (*pendiente*)--></a>
+                                                                </li>
+                                                                <li>
+                                                                <a href="{{ path('inf_reclamosgeneralesprocedentes') }}">
+                                                                <i class="fa"></i>2 <!--Porcentaje de reclamos generales y tiempo maximo de resolución--></a>
+                                                                </li>
+                                                                <li>
+                                                                <a href="{{ path('inf_reclamosfacturacion') }}">
+                                                                <i class="fa"></i>3 <!--Porcentaje de reclamos de facturación--></a>
+                                                                </li>
+                                                                <li>
+                                                                <a href="{{ path('inf_promedioreparacionaverias') }}">
+                                                                <i class="fa"></i>4 <!--Tiempo promedio de reparación de averìas (Técnicas)--></a>
+                                                                </li>
+                                                                <li>
+                                                                <a href="{{ path('inf_reclamoscapacidadcontratada') }}">
+                                                                <i class="fa"></i>5 <!--Porcentaje de reclamos por la capacidad del canal de acceso contratado por el cliente--></a>
+                                                                </li>
+                                                                <li>
+                                                                <a href="{{ path('inf_capacidadcontratada') }}">
+                                                                <i class="fa"></i>6 <!--Capacidad Internacional Contratada  (*pendiente*)--></a>
+                                                                </li>
+                                                                {#
+                                                                <li>
+                                                                <a href="{{ path('inf_fallasyreclamos') }}">
+                                                                <i class="fa"></i>Fallas y Reclamos</a>
+                                                                </li>
+                                                                <li>
+                                                                <a href="{{ path('inf_encuestadeabonados') }}">
+                                                                <i class="fa"></i>Encuesta Abonados</a>
+                                                                </li>
+                                                                #}
+                                                             </ul>
+                                                        </li>
+                                                        <li>
+                                                        <a href="#"> <span class="menu-item-parent">FORMULARIOS DE TARIFA</span></a>
+                                                        <ul>
+                                                                <li>
+                                                                <a href="{{ path('inf_tarifas') }}">
+                                                                <i class="fa"></i>Tarifas Conmutada</a>
+                                                                </li>
+                                                        </ul>         
+                                                        </li>
+                                                        <li>
+                                                        <a href="#"> <span class="menu-item-parent">FORMULARIOS DE USUARIO</span></a>
+                                                        <ul>
+                                                                <li>
+                                                                <a href="{{ path('inf_lineasdedicadas') }}">
+                                                                <i class="fa"></i>Lineas Dedicadas</a>
+                                                                </li> 
+                                                        </ul>
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                    </li> 
+                                                    {% if is_granted('ROLE_ADMIN') %}
+                                                     <li>
+                                                        <a href="{{ path('clientessuspendidos') }}"><i class="fa fa-lg fa-fw fa-outdent"></i> <span class="menu-item-parent">Clientes Suspendidos</span></a>
+                                                    
+                                                    </li>     
+                                                    {%endif%}
+                                                </ul>
+                                                        
+					</li>
+                                        {%endif%}
+                                        {% if is_granted('ROLE_ADMIN') %}
+    
+                                        
+                                        <li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-cog"></i> <span class="menu-item-parent">Configuracion</span></a>
+                                                <ul>
+                                                <li>
+						<a href="{{ path('secured_user') }}"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Usuarios</span></a>
+                                                
+                                            
+                                                </li>
+                                                <li>
+						<a href="{{ path('admin_role') }}"><i class="fa fa-lg fa-fw flaticon-businessman271"></i> <span class="menu-item-parent">Roles</span></a>
+                                                </li>
+                                                <li>
+                                                        
+                                                        <a href="#"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">Ubicaciones</span></a>
+                                                            <ul>
+                                                            <li>
+                                                            <a href="{{ path('parroquias') }}">
+                                                            <i class="fa fa-flag-checkered"></i> Parroquias</a>
+                                                            </li>    
+                                                            <li>
+                                                            <a href="{{ path('sectores') }}">
+                                                            <i class="fa fa-search"></i> Sectores</a>
+                                                            </li>
+							
+                                                        </ul>
+                                                        
+                                                </li>
+                                                </ul>
+                                            
+					</li>
+					{% endif %}
+                                        <li>
+						<a href="http://arxisla.com" target="_blank"><i class="fa fa-lg fa-fw fa-support"></i> <span class="menu-item-parent">Soporte</span></a>
+					</li>
+                                       
+				</ul>

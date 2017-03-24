@@ -1,0 +1,73 @@
+{% extends app.request.isXmlHttpRequest ? '::baseajax.html.twig' : '::basesmartpanel.html.twig' %}
+{% block content %}
+<!-- Bread crumb is created dynamically -->
+<!-- row -->
+<div class="row noprint">
+	
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			
+			<!-- PAGE HEADER -->
+			<i class="fa-fw fa fa-home"></i> 
+				Inicio
+			<span>>  
+				Panel
+			</span>
+		</h1>
+	</div>
+	
+	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<ul id="sparks" class="">
+			<li class="sparks-info">
+				<h5> Mis Ingresos <span class="txt-color-blue">$47,171</span></h5>
+				<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+					1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Trafico <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+				<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Ordenes <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+				<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- end row -->
+
+<!--
+	The ID "widget-grid" will start to initialize all widgets below 
+	You do not need to use widgets if you dont want to. Simply remove 
+	the <section></section> and you can use wells or panels instead 
+	-->
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	
+
+
+	<!-- row -->
+
+	<div class="row">
+
+		<!-- a blank row to get started -->
+		<div class="col-sm-12 text-center">
+			<!-- your contents here -->
+                       <img src="{{asset("logo.png")}}" />
+		</div>
+			
+	</div>
+
+	<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+{% endblock %}

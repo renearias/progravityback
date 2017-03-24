@@ -1,0 +1,32 @@
+<!-- MAIN CONTENT -->
+<div id="content"  ng-controller="DashboardCtrl">
+
+	<div class="row">
+		<big-breadcrumbs items="['Inicio', 'Panel']" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="{{path('layout-sub-header')}}"></div>
+                {#<div smart-include="{{asset('app/layout/partials/sub-header.tpl.html')}}"></div>#}
+                
+	</div>
+	<!-- widget grid -->
+	<section id="widget-grid" widget-grid>
+
+		<!-- row -->
+                <div class="row">
+
+		<!-- a blank row to get started -->
+                    <article class="col-sm-12 text-center">
+			<!-- your contents here -->
+                        <img src="{{asset("logo.png")}}" />
+                       <!--<div smart-include="app/dashboard/live-feeds.tpl.html" class="placeholder-live-feeds"></div>
+                       -->
+                    </article>
+		</div>
+			
+                
+		
+
+	</section>
+	<!-- end widget grid -->
+
+</div>
+<!-- END MAIN CONTENT -->

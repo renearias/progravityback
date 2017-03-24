@@ -1,0 +1,69 @@
+{% extends  '::baselogin.html.twig'%}
+{% block content %}
+   <div class="row">
+			    <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+			       <div class="login-box clearfix animated flipInY">
+			       		<div class="page-icon animated bounceInDown">
+                                                <i class="glyphicon glyphicon-user"></i>	
+			       		</div>
+                                        <!-- Brand -->
+			        	<div class="login-logo">
+                                            <a href="#"><img src="{{asset('escudo.png')}}" height=100 alt="Logo Institucion"></a>
+			        	</div>
+                                        <!--/ Brand -->
+                                         <div class='text-center'>
+                                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                            <!-- movil grande -->
+                                            <ins class="adsbygoogle"
+                                                 style="display:inline-block;width:320px;height:100px"
+                                                 data-ad-client="ca-pub-9022887868130724"
+                                                 data-ad-slot="5936824496"></ins>
+                                            <script>
+                                            (adsbygoogle = window.adsbygoogle || []).push({});
+                                            </script>
+                                        </div> 
+			        	<hr>
+                                        <div class="text-center"> 
+                                            	<h4><b>{% block titleform %}{% endblock titleform %}</b></h4>
+			        	</div>
+                                        <div class="login-form">
+                                        {% block fos_user_content %}
+			        		   <!-- form -->
+                                        {% endblock fos_user_content %}
+                                        </div>
+                                        {% for type, messages in app.session.flashBag.all %}
+                                            {% for message in messages %}
+                                                <div class="{{ type }}" style="text-align:center">
+                                                    {{ message|trans({}, 'FOSUserBundle') }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %} 
+			       </div>
+			    </div>
+			</div>
+
+
+{#<span id="extr-page-header-space"> 
+                        
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                <a class="btn btn-primary" href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            {% else %}
+                                <a class="btn btn-primary" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            {% endif %}
+                        
+                            
+                        </span>#}
+                        
+ 
+                        
+    
+  
+<!-- Content text -->
+{#<p class="text-muted text-center sign-link">Need an account? <a data-ng-href="#/sign-up"> Sign up free</a></p>#}
+{#<p class="text-muted text-center sign-link">Necesitas una cuenta? <a data-ng-href="{{path('fos_user_registration_register')}}"> Registrate aqui</a></p>#}
+<!--/ Content text -->
+       
+{% endblock content %}  

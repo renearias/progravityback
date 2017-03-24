@@ -1,0 +1,25 @@
+
+                <ul>
+
+                {%- for action in record_actions %}
+                    
+                    
+                    
+                    
+                    
+                    {% set actionarray={'index':'index', 'mostrar':'show', 'nuevo':'new', 'editar':'edit', 'eliminar':'delete'}%}
+                    {% set actionkey={'index':'index', 'show':'mostrar', 'new':'nuevo', 'edit':'editar', 'delete':'eliminar'}%}
+                    {% if action in actionarray%}
+                        {%set actiontext=actionkey[action] %}
+                        
+                     {%else%}
+                        {%set actiontext=action %}
+                    {%endif%}
+                        
+                    <li>
+                        <a href="{{ "{{ path('" ~ route_name_prefix ~ "_" ~ action ~ "', { 'id': entity."~ identifier ~" }) }}" }}">{{ actiontext }}</a>
+                    </li>
+
+                {%- endfor %}
+
+                </ul>

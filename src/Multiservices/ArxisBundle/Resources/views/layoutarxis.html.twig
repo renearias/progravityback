@@ -1,0 +1,172 @@
+{% block content %}
+<div class="row">
+	
+	<!-- col -->
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			<!-- PAGE HEADER -->
+			{% block headertitulo %}<i class="fa-fw fa fa-group"></i> 
+				Titulo{% endblock headertitulo %} 
+			<span>>  
+				{% block headersubtitulo %}Listasub{% endblock headersubtitulo%}  
+			</span>
+		</h1>
+	</div>
+	<!-- end col -->
+	{% block indicadores %}
+            {% include 'MultiservicesArxisBundle::indicadores.html.twig' %}
+        {% endblock indicadores %}
+	
+</div>
+                                
+ <!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+		
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			{% block alerta -%}
+                       
+                        {% endblock alerta %}
+                        
+                        {%block widgets -%}
+                                           
+                         {%endblock widgets%}   
+		</article>
+		<!-- WIDGET END -->
+		
+	</div>
+
+	<!-- end row -->
+
+	<!-- row -->
+
+	<div class="row">
+
+		<!-- a blank row to get started -->
+		<div class="col-sm-12">
+			<!-- your contents here -->
+		</div>
+			
+	</div>
+
+	<!-- end row -->
+
+</section>
+<!-- end widget grid -->                               
+  
+{% endblock content %}
+ 
+
+{% block javascripts %}
+    {% block ajax_scripts %}
+     
+        <script type="text/javascript">
+	
+	/* DO NOT REMOVE : GLOBAL FUNCTIONS!
+	 *
+	 * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
+	 *
+	 * // activate tooltips
+	 * $("[rel=tooltip]").tooltip();
+	 *
+	 * // activate popovers
+	 * $("[rel=popover]").popover();
+	 *
+	 * // activate popovers with hover states
+	 * $("[rel=popover-hover]").popover({ trigger: "hover" });
+	 *
+	 * // activate inline charts
+	 * runAllCharts();
+	 *
+	 * // setup widgets
+	 * setup_widgets_desktop();
+	 *
+	 * // run form elements
+	 * runAllForms();
+	 *
+	 ********************************
+	 *
+	 * pageSetUp() is needed whenever you load a page.
+	 * It initializes and checks for all basic elements of the page
+	 * and makes rendering easier.
+	 *
+	 */
+
+	pageSetUp();
+	
+	/*
+	 * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
+	 * eg alert("my home function");
+	 * 
+	 * var pagefunction = function() {
+	 *   ...
+	 * }
+	 * loadScript("js/plugin/_PLUGIN_NAME_.js", pagefunction);
+	 * 
+	 * TO LOAD A SCRIPT:
+	 * var pagefunction = function (){ 
+	 *  loadScript(".../plugin.js", run_after_loaded);	
+	 * }
+	 * 
+	 * OR you can load chain scripts by doing
+	 * 
+	 * loadScript(".../plugin.js", function(){
+	 * 	 loadScript("../plugin.js", function(){
+	 * 	   ...
+	 *   })
+	 * });
+	 */
+	
+	// pagefunction
+        
+	
+	var pagefunction = function() {
+		// clears the variable if left blank
+            {% block pagefunction %}{% endblock pagefunction%}
+	};
+	
+	// end pagefunction
+
+	// destroy generated instances 
+	// pagedestroy is called automatically before loading a new page
+	// only usable in AJAX version!
+
+	var pagedestroy = function(){
+		
+		
+                /*
+		Example below:
+
+		$("#calednar").fullCalendar( 'destroy' );
+		if (debugState){
+			root.console.log("✔ Calendar destroyed");
+		} 
+
+		For common instances, such as Jarviswidgets, Google maps, and Datatables, are automatically destroyed through the app.js loadURL mechanic
+
+		*/
+                {% block pagedestroy %}
+                  //block page destroy
+                {% endblock pagedestroy %}
+	};
+
+	// end destroy
+         {% javascripts '@jquery_moments_datatables'%}
+              loadScript("{{asset_url}}", pagefunction);
+                    
+        {% endjavascripts %} 
+	
+	// run pagefunction
+	pagefunction();
+                             
+			
+	
+</script>
+
+    
+ {% endblock ajax_scripts%} 
+{%  endblock javascripts %} 

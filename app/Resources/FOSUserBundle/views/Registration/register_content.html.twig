@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form id="smart-form-register" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register smart-form client-form ">
+    <header>
+ 	Registrarse es GRATIS*
+    </header>
+    <fieldset>
+         <section>
+    {{ form_widget(form) }}
+     </section>
+    </fieldset>
+    <footer>
+        <input class="btn btn-primary"  type="submit" value="{{ 'registration.submit'|trans }}" />
+    </footer>
+</form>

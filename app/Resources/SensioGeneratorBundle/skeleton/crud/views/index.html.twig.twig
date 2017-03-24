@@ -1,0 +1,72 @@
+{% block extends %}
+{#{{ "{% extends app.request.isXmlHttpRequest ? '::baseajaxforms.html.twig' : 'MultiservicesArxisBundle::layoutsmart.html.twig' %}" }}#}
+{% endblock extends %}
+{% block body %}
+{{ "{% block content -%}" }}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['{{ entity }}', 'Resumen']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+        <div smart-include="{{"{{path('layout-sub-header')}}"}}"></div>
+    </div>
+    <div class="row">
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+            {%- for field, metadata in fields %}
+
+                <th>{{ field|capitalize }}</th>
+
+            {%- endfor %}
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ '{% for entity in entities %}' }}
+            <tr>
+
+        {%- for field, metadata in fields %}
+            {%- if loop.first and ('show' in actions) %}
+
+                <td><a href="{{ "{{ path('" ~ route_name_prefix ~ "_show', { 'id': entity."~ identifier ~" }) }}" }}">{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</a></td>
+
+            {%- elseif metadata.type in ['date', 'datetime'] %}
+
+                <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
+
+            {%- else %}
+
+                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+
+            {%- endif %}
+
+            {%- if loop.last %}
+
+                <td>
+                    {%- include "crud/views/others/actions.html.twig.twig" %}
+                </td>
+
+            {%- endif %}
+        {%- endfor %}
+
+            </tr>
+        {{ '{% endfor %}' }}
+        </tbody>
+    </table>
+    </div>
+    <div class="row">    
+    {% if 'new' in actions %}
+    <ul>
+        <li>
+            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}">
+                Crear nueva entrada
+            </a>
+        </li>
+    </ul>
+    {% endif %}
+    </div>
+</div>    
+{{ "{% endblock %}" }}
+{% endblock body %}

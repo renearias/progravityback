@@ -1,0 +1,55 @@
+
+<aside id="left-panel" class="noprint">
+
+    <!-- User info -->
+    <div login-info></div>
+    <!-- end user info -->
+
+    <nav>
+        <!-- NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+        <ul data-smart-menu>
+            {%verbatim%}
+            <li data-ui-sref-active="active">
+                <a data-ui-sref="app.dashboard" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span
+                        class="menu-item-parent">{{getWord('Dashboard')}}</span></a>
+            </li>
+             {%endverbatim%}
+
+            
+            {#<li data-ui-sref-active="active">
+                <a data-ui-sref="app.inbox.folder" title="Inbox">
+                    <i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">{{getWord('Inbox')}}</span><span
+                        unread-messages-count class="badge pull-right inbox-badge"></span></a>
+            </li>
+           
+            <li data-menu-collapse>
+                        <a data-ui-sref="app.paypay.ingresos.list" href="{{ path('ingresos') }}"><i class="fa fa-lg fa-fw fa-dollar"></i> <span class="menu-item-parent">Finanzas</span></a>
+                        <ul>
+                            <li data-ui-sref-active="active">
+                                    <a data-ui-sref="app.paypay.ingresos.list" href="{{ path('ingresos') }}"><i class="fa fa-lg fa-fw fa-arrow-up"></i> <span class="menu-item-parent">Ingresos</span></a>
+                            </li>
+                            <li data-ui-sref-active="active">
+                                    <a data-ui-sref="app.paypay.egresos.list" href="{{ path('egresos') }}"><i class="fa fa-lg fa-fw fa-arrow-down"></i> <span class="menu-item-parent">Egresos</span></a>
+                            </li>
+                        </ul>
+                </li> 
+            #}
+            <li data-ui-sref-active="active">
+                    <a href="http://arxis.la" target="_blank"><i class="fa fa-lg fa-fw fa-support"></i> <span class="menu-item-parent">Soporte</span></a>
+            </li>
+                
+            {%verbatim%}
+            
+        </ul>
+    </nav>
+
+  <span class="minifyme" data-action="minifyMenu" minify-menu>
+    <i class="fa fa-arrow-circle-left hit"></i>
+  </span>
+
+</aside>
+{%endverbatim%}

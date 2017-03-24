@@ -1,0 +1,25 @@
+{% use  '::baseajaxforms.html.twig'  %}
+{% block encabezado %}
+<div class="row">
+	
+	<!-- col -->
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			<!-- PAGE HEADER -->
+			{% block headertitulo %}<i class="fa-fw fa fa-group"></i> 
+				Titulo{% endblock headertitulo %} 
+			<span>>  
+				{% block headersubtitulo %}Listasub{% endblock headersubtitulo%}  
+			</span>
+		</h1>
+	</div>
+	<!-- end col -->
+	{% block indicadores %}
+            {% include 'MultiservicesArxisBundle::indicadores.html.twig' %}
+        {% endblock indicadores %}
+	
+</div>    
+{% endblock encabezado %}    
+{% block body %}
+    {{ parent() }}
+{% endblock body %}    

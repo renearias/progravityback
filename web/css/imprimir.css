@@ -1,0 +1,49 @@
+@page {
+      size: A4;
+     margin-left: 0.5cm;
+      margin-right: 0.5cm;
+   //    margin-top: 5cm;  
+    //margin-bottom: 5cm;  
+
+}
+.printable{display:none;}
+@media print {
+#cabecera {
+  display: none !important;
+}
+.pagina {
+     width:20cm;
+     //height:20cm;
+     margin-left: auto;
+     margin-right: auto;
+     line-height: 15px;
+}
+
+#menu
+{
+  display: none !important;
+}
+#imprimir {
+  display: none !important;
+}
+.noprint
+{
+ display: none !important;
+}
+
+body, #contenido, #principal, #pie {
+  float: none !important;
+  width: auto !important;
+  //height: auto !important;
+  margin:  0 !important;
+  padding: 0 !important;
+}
+
+ .printable {
+     display:block;
+     width: 18cm;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ .screen {display:none;}
+}

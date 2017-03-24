@@ -1,0 +1,5 @@
+{% extends "bootstrap_3_layout.html.twig" %}
+{% block form_start -%}
+    {% set attr = attr|merge({class: (attr.class|default('') ~ ' smart-form')|trim}) %}
+    {{- parent() -}}
+{%- endblock form_start %}

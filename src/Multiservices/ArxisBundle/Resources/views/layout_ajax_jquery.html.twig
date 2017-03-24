@@ -1,0 +1,12 @@
+{# como puede apreciar, el layout para ajax sólo debe incluir el bloque contenido,
+adicionalmente podemos añadir extras #}
+
+    {% block content%}{% endblock content%}
+{% block paceloader %}
+{% endblock%}
+{% block javascripts %}
+<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script> if (!window.jQuery) { document.write('<script src="{{ asset('bundles/smartadmin/js/libs/jquery-2.0.2.min.js')}}"><\/script>');} </script>
+
+{% endblock javascripts %}

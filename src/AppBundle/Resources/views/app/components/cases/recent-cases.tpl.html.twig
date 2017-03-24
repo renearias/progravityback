@@ -1,0 +1,19 @@
+{%verbatim%}
+<div class="project-context hidden-xs dropdown">
+
+    <span class="label">{{getWord('Casos')}}:</span>
+    <span class="project-selector dropdown-toggle">{{getWord('Recent cases')}} <i ng-if="cases.length"
+            class="fa fa-angle-down"></i></span>
+
+    <ul class="dropdown-menu" ng-if="cases.length">
+        <li ng-repeat="case in cases">
+            <a data-ui-sref="app.cases.show({id: {{case.id}}})">{{case.caso}}</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a ng-click="clearCases()"><i class="fa fa-power-off"></i> Cerrar</a>
+        </li>
+    </ul>
+
+</div>
+{%endverbatim%}

@@ -1,0 +1,17 @@
+{% extends app.request.isXmlHttpRequest ? '::baseajaxforms.html.twig' : '::basesmartpanel.html.twig' %}
+{% form_theme edit_form 'MultiservicesArxisBundle:Forms:campos.html.twig' %}
+{% form_theme delete_form 'MultiservicesArxisBundle:Forms:campos.html.twig' %}
+{% block content -%}
+    <h1>Role edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="#{{ path('admin_role') }}">
+            Regresar a la Lista
+        </a>
+    </li>
+    <li>{{ form_start(delete_form) }}{{ form_row(delete_form.submit, { 'label': 'Eliminar'}) }}{{ form_end(delete_form) }}</li>
+</ul>
+{% endblock %}

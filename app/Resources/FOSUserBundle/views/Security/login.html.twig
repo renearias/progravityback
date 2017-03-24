@@ -1,0 +1,159 @@
+{% extends 'MultiservicesArxisBundle::layoutsmart.html.twig' %}
+{% block title %}Bienvenido a Grupo Internet Para Todos!{% endblock %}
+{% block content %}
+
+    
+			<!-- MAIN CONTENT -->
+			<div id="content" class="container">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+						<h1 class="txt-color-red login-header-big">BIENVENIDO</h1>
+						<div class="hero">
+
+							<div class="pull-left login-desc-box-l">
+								<h4 class="paragraph-header">Ahora somos digitales. Experimenta la velocidad de Grupo Internet Para Todos, donde quiera que vayas!</h4>
+								<div class="login-app-icons">
+									<a href="http://grupoint.com.ec" class="btn btn-danger btn-sm">mas información</a>
+									<!--<a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>-->
+								</div>
+							</div>
+							
+							<img src="{{ asset('logo.png')}}" class="pull-right display-image" alt="" style="width:310px">
+
+						</div>
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<h5 class="about-heading">Acerca de GrupoInt - ¿Estás al día? ?</h5>
+								<p>
+									soluciones inteligentes y de vanguardia tecnológicas para tus necesidades de conectividad  
+								</p>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<h5 class="about-heading">GrupoInt para ti!</h5>
+								<p>
+									Buscamos Proporcionar las tecnologías más innovadoras a medida de las necesidades empresariales,
+                                                                        con el objetivo de incrementar su competitividad y productividad. Para ello implementamos
+                                                                        soluciones prácticas adaptadas a sus necesidades y desarrollamos nuevas soluciones creativas.
+                                                                        Nuestra base parte del aprovechamiento de las nuevas redes.
+								</p>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+						
+
+                                                <div class="well no-padding">
+                                                    {# {% if error %}
+                                                        <div>{{ error.message }}</div>
+                                                    {% endif %}	#}
+                                                    <form action="{{ path("fos_user_security_check") }}" id="login-form" method="post" class="smart-form client-form">
+								<header>
+									Iniciar Sesión
+								</header>
+
+								<fieldset>
+									 {% if error %}
+                                                                        <section>  {{ error.message }}</section>
+                                                                        {% endif %}	
+									<section>
+										<label class="label">Usuario</label>
+										<label class="input"> <i class="icon-append fa fa-user"></i>
+											<!--<input type="email" name="email">-->
+                                                                                        <input type="text" id="username" name="_username" value="{{last_username}}"/>
+											<b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>Por favor introduzca su nombre de usuario</b></label>
+									</section>
+
+									<section>
+										<label class="label">Contraseña</label>
+										<label class="input"> <i class="icon-append fa fa-lock"></i>
+										        <input type="password"	id="password"	name="_password"/>
+                                                                                       	<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i>introduzca su contraseña</b> </label>
+										<div class="note">
+											<a href="forgotpassword.html">¿Cual es mi contraseña?</a>
+										</div>
+									</section>
+
+									<section>
+                                                                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+										<label class="checkbox">
+											<input type="checkbox" name="remember" checked="">
+											<i></i>Seguir conectado</label>
+									</section>
+								</fieldset>
+								<footer>
+									<!--<input type="submit" name="login"/>-->
+                                                                       <button type="submit" class="btn btn-primary">
+										Iniciar Sesiòn
+									</button>
+								</footer>
+							</form>
+
+						</div>
+						<!--
+						<h5 class="text-center"> - O conéctate usando -</h5>
+															
+							<ul class="list-inline text-center">
+								<li>
+									<a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+								</li>
+							</ul>
+						-->
+					</div>
+				</div>
+			</div>
+
+	
+    
+
+   
+
+{% endblock %}
+                        
+{% block javascriptsmore %}
+<script type="text/javascript">
+			runAllForms();
+
+			$(function() {
+				// Validation
+				$("#login-form").validate({
+					// Rules for form validation
+					rules : {
+						email : {
+							required : true,
+							email : true
+						},
+						password : {
+							required : true,
+							minlength : 3,
+							maxlength : 20
+						}
+					},
+
+					// Messages for form validation
+					messages : {
+						email : {
+							required : 'Please enter your username',
+							
+						},
+						password : {
+							required : 'Please enter your password'
+						}
+					},
+
+					// Do not change code below
+					errorPlacement : function(error, element) {
+						error.insertAfter(element.parent());
+					}
+				});
+			});
+		</script>
+{% endblock %}                    

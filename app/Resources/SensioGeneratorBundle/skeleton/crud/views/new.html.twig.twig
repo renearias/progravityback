@@ -1,0 +1,22 @@
+{% block extends %}
+{#{{ "{% extends app.request.isXmlHttpRequest ? '::baseajaxforms.html.twig' : 'MultiservicesArxisBundle::layoutsmart.html.twig' %}" }}#}
+{% endblock extends %}
+{% block body %}
+{{ "{% block content -%}" }}
+<div id="content">
+    <div class="row">
+        <big-breadcrumbs items="['{{ entity }}', 'Nuevo']" icon="file"
+                         class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+        <div smart-include="{{"{{path('layout-sub-header')}}"}}"></div>
+    </div>
+    <div class="row">
+
+    {{ '{{ form(form) }}' }}
+    </div>
+    <div class="row">
+    {% set hide_edit, hide_delete = true, true %}
+    {% include 'crud/views/others/record_actions.html.twig.twig' %}
+    </div>
+</div>
+{{ "{% endblock %}" }}
+{% endblock body %}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es-la" class="no-js">
+        <head>
+             {% if(app.environment=='dev') %}     
+                 <base href="{{asset('/')~'app_dev.php/'}}">
+             {%else%}
+                  <base href="{{asset('/')~''}}">
+             {%endif%}
+		<meta charset="utf-8">
+		 {% block head %}{% endblock %}      
+                <title>{% block title %}Arxis{% endblock %} - {{ app.user ? app.user.name : 'Anonymous' }}</title>
+                {% block stylesheets %}{% endblock %}
+		<meta name="description" content="">
+		<meta name="author" content="Rene Arias">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<!-- #CSS Links -->
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/bootstrap.min.css')}}">
+                <link rel="stylesheet" type="text/css" media="print" href="{{asset('styles/css/bootstrap.min.css')}}">
+                
+                <link rel="stylesheet" type="text/css" href="{{asset('css/imprimir.css')}}">
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/font-awesome.min.css')}}">
+                <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/flaticon.css')}}">
+                <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/flaticon-bussiness.css')}}">
+
+		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+                <link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/smartadmin-production-plugins.min.css')}}">
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/smartadmin-production.min.css')}}">
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/smartadmin-skins.min.css')}}">
+                
+                <link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/smartadmin-angular.css')}}">
+                
+                <!-- SmartAdmin AngularJS Fixes -->
+		{#<link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/fixes.css')}}">#}
+
+		<!-- SmartAdmin RTL Support (Not using RTL? Disable the CSS below to save bandwidth) -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('styles/css/smartadmin-rtl.min.css')}}">
+                
+
+		<!-- We recommend you use "your_style.css" to override SmartAdmin
+		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/your_style.css')}}"> -->
+
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/demo.min.css')}}">
+
+		<!-- #FAVICONS -->
+		<link rel="shortcut icon" href="{{asset('img/favicon/favicon.ico')}}" type="image/x-icon">
+		<link rel="icon" href="{{asset('img/favicon/favicon.ico')}}" type="image/x-icon">
+
+		<!-- #GOOGLE FONT -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css">
+		
+                <!-- #APP SCREEN / ICONS -->
+		<!-- Specifying a Webpage Icon for Web Clip 
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="{{asset('styles/img/splash/sptouch-icon-iphone.png')}}">
+		<link rel="apple-touch-icon" sizes="76x76" href="{{asset('styles/img/splash/touch-icon-ipad.png')}}">
+		<link rel="apple-touch-icon" sizes="120x120" href="{{asset('styles/img/splash/touch-icon-iphone-retina.png')}}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{{asset('styles/img/splash/touch-icon-ipad-retina.png')}}">
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="{{asset('img/splash/ipad-landscape.png')}}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="{{asset('img/splash/ipad-portrait.png')}}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="{{asset('img/splash/iphone.png')}}" media="screen and (max-device-width: 320px)">
+	<!-- Your GOOGLE ANALYTICS CODE Below -->
+		<script>
+                    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                    ga('create', 'UA-49822616-5', 'auto');
+                    ga('require', 'displayfeatures');
+                    ga('send', 'pageview');
+
+                </script>
+        </head>
+	<!--
+
+	TABLE OF CONTENTS.
+
+	Use search to find needed section.
+
+	===================================================================
+
+	|  01. #CSS Links                |  all CSS links and file paths  |
+	|  02. #FAVICONS                 |  Favicon links and file paths  |
+	|  03. #GOOGLE FONT              |  Google font link              |
+	|  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
+	|  05. #BODY                     |  body tag                      |
+	|  06. #HEADER                   |  header tag                    |
+
+	===================================================================
+
+	-->
+
+	<!-- #BODY -->
+	<!-- Possible Classes (to hardcode the classes you must disable the __ module)
+
+	* 'smart-style-{SKIN#}'
+	* 'smart-rtl'         - Switch theme mode to RTL
+	* 'menu-on-top'       - Switch to top navigation (no DOM change required)
+	* 'no-menu'           - Hides the menu completely
+	* 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+	* 'fixed-header'      - Fixes the header
+	* 'fixed-navigation'  - Fixes the main menu
+	* 'fixed-ribbon'      - Fixes breadcrumb
+	* 'fixed-page-footer' - Fixes footer
+	* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+
+	Possible attributes
+
+	* 'data-smart-device-detect' - Detects if mobile or desktop, adds a class to body tag
+	* 'data-smart-fast-click'    - Mobile click events
+	* 'data-smart-layout'        - Mobile view event listener
+	* 'data-smart-page-title'    - Page title
+
+	-->
+        
+        <body data-smart-device-detect
+		data-smart-fast-click
+		data-smart-layout
+		data-smart-page-title="IspControl Grupo Internet Para Todos" class="smart-style-0">
+
+		<!-- ui-view container -->
+
+		<div data-ui-view="root"  data-autoscroll="false"></div>
+
+		<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+			<script src="plugin/es5-shim/es5-shim.js"></script>
+			<script src="plugin/json3/lib/json3.min.js"></script>
+		<![endif]-->
+
+		<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+                <script src="{{asset('build/vendor.js')}}"></script>		
+		<script src="{{asset('build/app.js')}}"></script>
+		<!-- Include Date Range Picker -->
+                <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+                <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+	</body>
+        
+</html>

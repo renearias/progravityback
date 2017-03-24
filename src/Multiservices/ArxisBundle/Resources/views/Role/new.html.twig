@@ -1,0 +1,16 @@
+{% extends app.request.isXmlHttpRequest ? '::baseajaxforms.html.twig' : '::basesmartpanel.html.twig' %}
+{% form_theme form 'MultiservicesArxisBundle:Forms:campos.html.twig' %}
+{% block content -%}
+
+    <h1>Role creacion</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="#{{ path('admin_role') }}">
+            Regresar a la Lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

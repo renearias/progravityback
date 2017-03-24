@@ -1,0 +1,6 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="fos_user_user_show" style="text-align: center;">
+    <div>{{ 'profile.show.username'|trans }}: {{ user.username }}</div>
+    <div>{{ 'profile.show.email'|trans }}: {{ user.email }}</div>
+    <a class="btn btn-login" style="width: 200px" href="{{path('homepage')}}" />Ir a Multiacademico</a>
+</div>

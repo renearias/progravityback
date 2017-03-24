@@ -1,0 +1,9 @@
+#imports:
+    #- { resource: "@TaskBundle/Resources/config/types.yml" }
+#doctrine:
+#    dbal:
+#      types:
+#         EstadoEquipoType: Multiservices\InventarioBundle\Types\EstadoEquipoType
+#         AntiguedadEquipoType: Multiservices\InventarioBundle\Types\AntiguedadEquipoType
+#         EstadoClienteType: Multiservices\IspControlBundle\Types\EstadoClienteType
+         

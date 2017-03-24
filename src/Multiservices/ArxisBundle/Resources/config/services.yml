@@ -1,0 +1,13 @@
+services:
+    twig.extension.multiservices.arxis:
+      class: Multiservices\ArxisBundle\Twig\Extension\ArxisExtension
+      public: false
+      tags:
+          - { name: twig.extension }
+      arguments: ["@twig.loader"]
+    multiservices.arxis.listener:
+      class: Multiservices\ArxisBundle\EventListener\ControllerListener
+      tags:
+          - {name: kernel.event_listener,event: kernel.controller,method: onKernelController}
+      arguments: ["@twig.extension.multiservices.arxis"]
+  
