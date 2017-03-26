@@ -143,9 +143,9 @@ class Order
     /**
      * @var boolean
      *
-     * @ORM\Column(name="units", type="boolean", nullable=false)
+     * @ORM\Column(name="units", type="boolean", nullable=false, options={"default":1})
      */
-    private $units = '1';
+    private $units = 1;
 
     /**
      * @var integer
@@ -157,16 +157,16 @@ class Order
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_payed", type="boolean", nullable=false)
+     * @ORM\Column(name="is_payed", type="boolean", nullable=false, options={"default":0})
      */
-    private $isPayed = '0';
+    private $isPayed = 0;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_finished", type="boolean", nullable=false)
+     * @ORM\Column(name="is_finished", type="boolean", nullable=false, options={"default":0})
      */
-    private $isFinished = '0';
+    private $isFinished = 0;
 
     /**
      * @var integer
@@ -178,16 +178,16 @@ class Order
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_buspack", type="boolean", nullable=true)
+     * @ORM\Column(name="is_buspack", type="boolean", nullable=true, options={"default":0})
      */
-    private $isBuspack = '0';
+    private $isBuspack = 0;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_trash", type="boolean", nullable=false)
+     * @ORM\Column(name="is_trash", type="boolean", nullable=false, options={"default":0})
      */
-    private $isTrash = '0';
+    private $isTrash = 0;
 
     /**
      * @var boolean
