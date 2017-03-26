@@ -11,7 +11,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
 * @ORM\Entity
 * @ORM\HasLifecycleCallbacks
-* @ORM\Table(name="usuarios2")
+* @ORM\Table(name="usuarios")
 * @Serializer\ExclusionPolicy("all")
 */
 class Usuario extends BaseUser
