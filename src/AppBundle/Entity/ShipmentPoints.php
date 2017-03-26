@@ -50,5 +50,110 @@ class ShipmentPoints
     private $activeHours;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return boolean
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     *
+     * @return ShipmentPoints
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set street
+     *
+     * @param string $street
+     *
+     * @return ShipmentPoints
+     */
+    public function setStreet($street)
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    /**
+     * Get street
+     *
+     * @return string
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
+     * Set streetNumber
+     *
+     * @param integer $streetNumber
+     *
+     * @return ShipmentPoints
+     */
+    public function setStreetNumber($streetNumber)
+    {
+        $this->streetNumber = $streetNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get streetNumber
+     *
+     * @return integer
+     */
+    public function getStreetNumber()
+    {
+        return $this->streetNumber;
+    }
+
+    /**
+     * Set activeHours
+     *
+     * @param string $activeHours
+     *
+     * @return ShipmentPoints
+     */
+    public function setActiveHours($activeHours)
+    {
+        $this->activeHours = $activeHours;
+
+        return $this;
+    }
+
+    /**
+     * Get activeHours
+     *
+     * @return string
+     */
+    public function getActiveHours()
+    {
+        return $this->activeHours;
+    }
+}

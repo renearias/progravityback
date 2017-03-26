@@ -43,5 +43,86 @@ class Countries
     private $isWhitelisted;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Countries
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set countryCode
+     *
+     * @param string $countryCode
+     *
+     * @return Countries
+     */
+    public function setCountryCode($countryCode)
+    {
+        $this->countryCode = $countryCode;
+
+        return $this;
+    }
+
+    /**
+     * Get countryCode
+     *
+     * @return string
+     */
+    public function getCountryCode()
+    {
+        return $this->countryCode;
+    }
+
+    /**
+     * Set isWhitelisted
+     *
+     * @param boolean $isWhitelisted
+     *
+     * @return Countries
+     */
+    public function setIsWhitelisted($isWhitelisted)
+    {
+        $this->isWhitelisted = $isWhitelisted;
+
+        return $this;
+    }
+
+    /**
+     * Get isWhitelisted
+     *
+     * @return boolean
+     */
+    public function getIsWhitelisted()
+    {
+        return $this->isWhitelisted;
+    }
+}
