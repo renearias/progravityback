@@ -734,30 +734,6 @@ class Usuario extends BaseUser
     }
     
     /**
-     * Set nodo
-     * 
-     * @param \Multiservices\IspControlBundle\Entity\Server
-     * @return Usuario
-     */
-    public function setNodo(\Multiservices\IspControlBundle\Entity\Server $nodo)
-    {
-        $this->nodo = $nodo;
-
-        return $this;
-    }
-
-    /**
-     * Get nodo
-     * 
-     * @return \Multiservices\IspControlBundle\Entity\Server
-     */
-    public function getNodo()
-    {
-        return $this->nodo;
-    }
-
-
-    /**
      * Set telefono
      *
      * @param string $telefono
