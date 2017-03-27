@@ -78,6 +78,9 @@ class OrderController extends Controller
      */
     public function addAction(Request $request)
     {
+        
+        $em = $this->getDoctrine()->getManager();
+        
         $order = new Order();
         
         $order->setPayerName($request->request->get('name'));
@@ -94,7 +97,15 @@ class OrderController extends Controller
         $order->setPayerPostalCode($request->request->get('postal_code'));
         $order->setPayerCity($request->request->get('city'));
         $order->setPayerLocality($request->request->get('locality'));
-        $order->setPayerProvince($request->request->get('province'));
+        
+        
+        
+        $province = $em->getRepository('AppBundle:Provinces')->find($request->request->get('province'));
+        if ($province){
+            $order->setPayerProvince($province);
+        }
+        
+        
         
         $order->setPayerAdditionalInfo($request->request->get('additional_info'));
         
@@ -110,7 +121,7 @@ class OrderController extends Controller
         $units=$order->getAmount()/5900;
         
         
-        $em = $this->getDoctrine()->getManager();
+      
 
         $em->persist($order);
         $em->flush();
