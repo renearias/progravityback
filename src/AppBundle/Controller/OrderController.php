@@ -99,10 +99,11 @@ class OrderController extends Controller
         $order->setPayerLocality($request->request->get('locality'));
         
         
-        
-        $province = $em->getRepository('AppBundle:Provinces')->find($request->request->get('province'));
-        if ($province){
-            $order->setPayerProvince($province);
+        if ($request->request->get('province'))
+        {   $province = $em->getRepository('AppBundle:Provinces')->find($request->request->get('province'));
+            if ($province){
+                $order->setPayerProvince($province);
+            }
         }
         
         
