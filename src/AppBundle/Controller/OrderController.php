@@ -6,6 +6,7 @@ use AppBundle\Entity\Order;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\Query;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Order controller.
@@ -121,40 +122,34 @@ class OrderController extends Controller
            $mailing_settings = $em->getRepository('AppBundle:Settings')->find('mailing_mail_local'); 
            $mailing_settings=array_filter(preg_split('/\R/', $mailing_settings->getValue()));
         }
-        /*$form = $this->createForm('AppBundle\Form\OrderType', $order);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($order);
-            $em->flush();
-
-            return $this->redirectToRoute('order_show', array('id' => $order->getId()));
-        }*/
-        
-        $message = \Swift_Message::newInstance()
-            ->setSubject('ProGravity: Hola '.$order->getPayerName().' ¡Gracias por su compra!')
-            ->setFrom('noreply@progravityhealth.com','ProGravity Health')
-            ->setTo($order->getPayerEmail())
-            ->setBody(
-                $this->renderView(
+        $template=$this->renderView(
                     'AppBundle:mail:mail.html.twig',
                     array(
                         'order' => $order,
                         'units'=>$units,
                         'shipment_text' => $mailing_settings
                     )
-                ),
+                );
+        
+        $message = \Swift_Message::newInstance()
+            ->setSubject('ProGravity: Hola '.$order->getPayerName().' ¡Gracias por su compra!')
+            ->setFrom('noreply@progravityhealth.com','ProGravity Health')
+            ->setTo($order->getPayerEmail())
+            ->setBody(
+                $template,
                 'text/html'
             )
         ;
         $this->container->get('mailer')->send($message);
 
-        return $this->render('AppBundle:mail:mail.html.twig', array(
-            'order' => $order,
-            'units'=>$units,
-            'shipment_text' => $mailing_settings
+        $response= new JsonResponse();
+        $response->setData(array(
+            'status' => 'success',
+            'body' => $template
+            
         ));
+        return $response;
     }
 
     /**
