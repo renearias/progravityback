@@ -132,6 +132,23 @@ class OrderController extends Controller
             return $this->redirectToRoute('order_show', array('id' => $order->getId()));
         }*/
         
+        $message = \Swift_Message::newInstance()
+            ->setSubject('ProGravity: Hola '.$order->getPayerName().' ¡Gracias por su compra!')
+            ->setFrom('noreply@progravityhealth.com','ProGravity Health')
+            ->setTo($order->getPayerEmail())
+            ->setBody(
+                $this->renderView(
+                    'AppBundle:mail:mail.html.twig',
+                    array(
+                        'order' => $order,
+                        'units'=>$units,
+                        'shipment_text' => $mailing_settings
+                    )
+                ),
+                'text/html'
+            )
+        ;
+        $this->container->get('mailer')->send($message);
 
         return $this->render('AppBundle:mail:mail.html.twig', array(
             'order' => $order,
