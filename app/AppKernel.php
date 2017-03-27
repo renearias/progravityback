@@ -18,8 +18,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            //new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
-            //new Mopa\Bundle\BarcodeBundle\MopaBarcodeBundle(),
+            
+            new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
+            new Http\HttplugBundle\HttplugBundle(),
+            
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Sg\DatatablesBundle\SgDatatablesBundle(),
