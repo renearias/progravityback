@@ -146,7 +146,7 @@ class OrderController extends Controller
         $response= new JsonResponse();
         $response->setData(array(
             'status' => 'success',
-            'body' => htmlentities($template)
+            'mail'=>['body' => $template]
             
         ));
         return $response;
