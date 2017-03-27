@@ -91,6 +91,7 @@
                 "database_user": "DATABASE_USER",
                 "database_password": "DATABASE_PASSWORD",
                 "database_port": "DATABASE_PORT",
+                "mailgun_key": "MAILGUN_KEY",
                 "secret": "SECRET",
                 "oauth_client": "OAUTH_CLIENT",
                 "oauth_secret": "OAUTH_SECRET",
