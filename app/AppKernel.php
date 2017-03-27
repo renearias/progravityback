@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             
             new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
             new Http\HttplugBundle\HttplugBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
             
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),

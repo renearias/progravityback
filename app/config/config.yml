@@ -152,3 +152,12 @@ fos_user:
     #        enabled: true
     #    form:
     #        type: app_user_registration    
+# Nelmio CORS
+nelmio_cors:
+    defaults:
+        allow_origin:  ["progravityhealth.com", "server.progravityhealth.com"]
+        allow_methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS"]
+        allow_headers: ["content-type", "authorization"]
+        max_age:       3600
+    paths:
+        '^/': ~        
