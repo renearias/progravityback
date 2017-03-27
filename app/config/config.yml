@@ -114,13 +114,26 @@ doctrine:
         auto_mapping: true
     
 
+cspoo_swiftmailer_mailgun:
+    key: "%mailgun_key%"
+    
+    domain: "progravityhealth.com"
+    http_client: 'httplug.client'
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    default_mailer: mailgun_mailer
+    mailers:
+        normal_mailer:
+            host:      "%mailer_host%"
+            username:  "%mailer_user%"
+            password:  "%mailer_password%"
+            port: "%mailer_port%"
+            encryption: "%mailer_encryption%"
+            auth_mode:	login
+            spool:     { type: memory }
+        mailgun_mailer:
+            transport: mailgun
+            spool:     { type: memory }
 
 fos_user:
     db_driver: orm
