@@ -136,14 +136,14 @@ class Order
     /**
      * @var boolean
      *
-     * @ORM\Column(name="shipment_method", type="boolean", nullable=false)
+     * @ORM\Column(name="shipment_method", type="integer", length=1, nullable=false)
      */
     private $shipmentMethod;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="units", type="boolean", nullable=false, options={"default":1})
+     * @ORM\Column(name="units", type="integer", length=2, nullable=false, options={"default":1})
      */
     private $units = 1;
 
@@ -157,16 +157,16 @@ class Order
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_payed", type="boolean", nullable=false, options={"default":0})
+     * @ORM\Column(name="is_payed", type="boolean", nullable=false, options={"default":false})
      */
-    private $isPayed = 0;
+    private $isPayed = false;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_finished", type="boolean", nullable=false, options={"default":0})
+     * @ORM\Column(name="is_finished", type="boolean", nullable=false, options={"default":false})
      */
-    private $isFinished = 0;
+    private $isFinished = false;
 
     /**
      * @var integer
@@ -178,16 +178,16 @@ class Order
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_buspack", type="boolean", nullable=true, options={"default":0})
+     * @ORM\Column(name="is_buspack", type="boolean", nullable=true, options={"default":false})
      */
-    private $isBuspack = 0;
+    private $isBuspack = false;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_trash", type="boolean", nullable=false, options={"default":0})
+     * @ORM\Column(name="is_trash", type="boolean", nullable=false, options={"default":false})
      */
-    private $isTrash = 0;
+    private $isTrash = false;
 
     /**
      * @var boolean
@@ -217,7 +217,9 @@ class Order
     private $shipmentPoint;
 
 
-
+    public function __construct() {
+        $this->date= new \DateTime();
+    }
     /**
      * Get id
      *

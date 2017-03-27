@@ -156,4 +156,8 @@ class ShipmentPoints
     {
         return $this->activeHours;
     }
+    
+    public function __toString() {
+        return $this->place;
+    }
 }
