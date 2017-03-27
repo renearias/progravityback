@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Order</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if order.date %}{{ order.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Payername</th>
+                <td>{{ order.payerName }}</td>
+            </tr>
+            <tr>
+                <th>Payersurname</th>
+                <td>{{ order.payerSurname }}</td>
+            </tr>
+            <tr>
+                <th>Payergender</th>
+                <td>{{ order.payerGender }}</td>
+            </tr>
+            <tr>
+                <th>Payerdni</th>
+                <td>{{ order.payerDni }}</td>
+            </tr>
+            <tr>
+                <th>Payerphone</th>
+                <td>{{ order.payerPhone }}</td>
+            </tr>
+            <tr>
+                <th>Payeremail</th>
+                <td>{{ order.payerEmail }}</td>
+            </tr>
+            <tr>
+                <th>Payerstreet</th>
+                <td>{{ order.payerStreet }}</td>
+            </tr>
+            <tr>
+                <th>Payerstreetnumber</th>
+                <td>{{ order.payerStreetNumber }}</td>
+            </tr>
+            <tr>
+                <th>Payerfloor</th>
+                <td>{% if order.payerFloor %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Payerdepartment</th>
+                <td>{{ order.payerDepartment }}</td>
+            </tr>
+            <tr>
+                <th>Payerpostalcode</th>
+                <td>{{ order.payerPostalCode }}</td>
+            </tr>
+            <tr>
+                <th>Payerlocality</th>
+                <td>{{ order.payerLocality }}</td>
+            </tr>
+            <tr>
+                <th>Payercity</th>
+                <td>{{ order.payerCity }}</td>
+            </tr>
+            <tr>
+                <th>Payeradditionalinfo</th>
+                <td>{{ order.payerAdditionalInfo }}</td>
+            </tr>
+            <tr>
+                <th>Paymentmethod</th>
+                <td>{% if order.paymentMethod %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Shipmentmethod</th>
+                <td>{% if order.shipmentMethod %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Units</th>
+                <td>{% if order.units %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ order.amount }}</td>
+            </tr>
+            <tr>
+                <th>Ispayed</th>
+                <td>{% if order.isPayed %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isfinished</th>
+                <td>{% if order.isFinished %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Noteid</th>
+                <td>{{ order.noteId }}</td>
+            </tr>
+            <tr>
+                <th>Isbuspack</th>
+                <td>{% if order.isBuspack %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Istrash</th>
+                <td>{% if order.isTrash %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Attendedby</th>
+                <td>{% if order.attendedBy %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('order_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('order_edit', { 'id': order.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
