@@ -6,6 +6,8 @@ app:
 #    resource: "@NotifyBundle/Resources/config/routing.yml"
 #    prefix:   /
 
+app_bundle:
+    resource: "@AppBundle/Resources/config/routing.yml"
 _multiservices_arxis:
     resource: "@MultiservicesArxisBundle/Resources/config/routing.yml"
 fos_js_routing:
@@ -17,7 +19,9 @@ fos_user_secure:
 fos_user_group:
     resource: "@FOSUserBundle/Resources/config/routing/group.xml"
     prefix: /group    
-    
+sg_datatables_bundle:
+    resource: "@SgDatatablesBundle/Controller/"
+    type:     annotation   
 #my_barcode_display:
 #    resource: "@MopaBarcodeBundle/Resources/config/routing/barcode_display.yml"
 #    prefix:   /

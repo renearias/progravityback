@@ -126,14 +126,14 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\Usuario
-    #from_email:
-    #    address:        info@multiacademico.com
-    #    sender_name:    Multiacademico App
-    #resetting:
-    #    email:
-    #        from_email:
-    #            address:        info@multiacademico.com
-    #            sender_name:    Multiacademico App
+    from_email:
+        address:        noreply@progravityhealth.com
+        sender_name:    ProGravity Health
+    resetting:
+        email:
+            from_email:
+                address:        noreply@progravityhealth.com
+                sender_name:    ProGravity Health
     #registration:
     #    confirmation:
     #        enabled: true
