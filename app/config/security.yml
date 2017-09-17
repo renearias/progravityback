@@ -44,7 +44,10 @@ security:
             anonymous: true
         order_add:
             pattern:  ^/order/add
-            anonymous: true    
+            anonymous: true
+        order_mail:
+            pattern:  ^/order/mail
+            anonymous: true        
 
         # secures part of the application
         
