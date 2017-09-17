@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class OrderController extends Controller
 {
+    const DEPOSITO_TRANSFERENCIA = 'Deposito o Transferencia Bancaria';
     /**
      * Lists all order entities.
      *
@@ -71,110 +72,57 @@ class OrderController extends Controller
         ));
     }
 
- /**
-     * @Route("/order/mail", name="orderMail")
-     */
-     public function mailAction(){
+     public function mailAction(Request $request)
+     {
 
-
-        $dataJson=json_decode(file_get_contents('php://input'));
-        $email=$dataJson->email;
-        $nombre  = $dataJson->customer->first_name;
-        $apellido = $dataJson->customer->last_name;
-        $formaPago = $dataJson->payment_gateway_names[0];
-        $emailRemitente  = "compras@progravityhealth.com";
-
-        if ($formaPago == 'deliver'){
-            
-            $template=$this->renderView(
-                    'AppBundle:mail:mail.html.twig',
-                    array(
-                        'units'=>$units,
-                        'shipment_text' => $mailing_settings
-                    )
-                );
-
-        $asuntoEmail = "Información de entrega ProGravity Health";
-
-        $header = 'From: ' . $emailRemitente . " \r\n";
-        $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-        $header .= "Mime-Version: 1.0 \r\n";
-        $header .= "Content-Type: text/html";
-
-        $mensaje = "¡Gracias por su compra! \r\n \r\n";
-        $mensaje .= "Hola ".$nombre." ".$apellido.", te informamos los datos necesarios para que retires tu producto por nuestro depósito. Abonarás en EFECTIVO al momento de retirarlo \r\n \r\n";
-        $mensaje .= "Dirección: <a href='https://www.google.com/maps/place/11+de+Septiembre+3468,+C1429BIN+CABA,+Argentina/@-34.546707,-58.4628993,17z/data=!3m1!4b1!4m5!3m4!1s0x95bcb427186447c1:0xb1a1115d7c4fbc6c!8m2!3d-34.546707!4d-58.4607106'>11 de Septiembre 3468 (Belgrano, CABA)</a>. \r\n \r\n";
-        $mensaje .= "Horarios: Lunes a Viernes - 9:00 a 17:00 hs. \r\n \r\n";
-        $para = $email;
-        
-        $message = \Swift_Message::newInstance()
-            ->setSubject($mensaje)
-            ->setFrom($emailRemitente,$asuntoEmail)
-            ->setTo($email)
-            ->setBody(
-                $template,
-                'text/html'
-            );
-
-
-
-        $this->container->get('mailer')->send($message);
-
-        $response= new JsonResponse();
-        $response->setData(array(
-            'status' => 'success',
-            'mail'=>['body' => $template]
-            
-        ));
-        return $response;
-
-        }elseif ($formaPago == 'visa'){
-           
-           $template=$this->renderView(
-                    'AppBundle:mail:mail.html.twig',
-                    array(
-                        'units'=>$units,
-                        'shipment_text' => $mailing_settings
-                    )
-                );
-
-        $asuntoEmail = "Datos Bancarios para su Compra ProGravity Health";
-
-        $header = 'From: ' . $emailRemitente . " \r\n";
-        $header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-        $header .= "Mime-Version: 1.0 \r\n";
-        $header .= "Content-Type: text/html";
-
-        $mensaje = "¡Gracias por su compra! \r\n \r\n";
-        $mensaje .= "Hola ".$nombre.", te informamos los datos necesarios para que abones tu compra. \r\n \r\n";
-        $mensaje .= "Banco de Galicia \r\n";
-        $mensaje .= "PROGRAVITY HEALTH S.R.L. \r\n";
-        $mensaje .= "Cat Cte N: 6412-1 182-1 \r\n";
-        $mensaje .= "CBU: 00701828 20000006412119 \r\n";
-        $mensaje .= "CUIT: 30-71514185-6 \r\n \r\n";
-        $mensaje .= "Al haber elegido la opción Depósito o Transferencia Bancaria, deberás enviar el comprobante a nuestra casilla: \r\n";
-        $mensaje .= "<a href='mailto:compras@progravityhealth.com'>compras@progravityhealth.com</a> \r\n";
-        $mensaje .= "Una vez recibido, podremos registrar su pago y habilitar su entrega. \r\n \r\n";
-        $para = $email;
-        
-        $message = \Swift_Message::newInstance()
-            ->setSubject($mensaje)
-            ->setFrom($emailRemitente, $asuntoEmail)
-            ->setTo($email)
-            ->setBody(
-                $template,
-                'text/html'
-            );
-        $this->container->get('mailer')->send($message);
-
-        $response= new JsonResponse();
-        $response->setData(array(
-            'status' => 'success',
-            'mail'=>['body' => $template]
-            
-        ));
-        return $response;
+        $params = array();
+        $content = $request->getContent();
+        if (!empty($content))
+        {
+            $params = json_decode($content, true); // 2nd param to get as array
         }
+        
+        $email=$params['email'];
+        $name=$params['customer']['first_name'].' '.$params['customer']['last_name'];
+        $payment_gateway_names=$params['payment_gateway_names'];
+        
+        if (in_array(self::DEPOSITO_TRANSFERENCIA,$payment_gateway_names))
+        {
+             var_dump("se eligfio deposito");
+             
+             $template=$this->renderView(
+                    'AppBundle:mail:mail_deposit.html.twig',
+                    array(
+                        'name' => $name,
+                        //'units'=>$units,
+                        //'shipment_text' => $mailing_settings
+                    )
+                );
+             
+             
+        }else{
+            
+        }
+        
+        $message = \Swift_Message::newInstance()
+            ->setSubject('ProGravity: Hola '.$name.' ¡Datos Bancarios para su Compra!')
+            ->setFrom('compras@progravityhealth.com','ProGravity Health')
+            ->setTo($email)
+            ->setBody(
+                $template,
+                'text/html'
+            )
+        ;
+        $this->container->get('mailer')->send($message);
+
+        $response= new JsonResponse();
+        $response->setData(array(
+            'status' => 'success',
+            //'mail'=>['body' => $template]
+            
+        ));
+        return $response;
+        
 }
 
         
