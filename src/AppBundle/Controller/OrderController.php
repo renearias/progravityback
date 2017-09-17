@@ -86,7 +86,7 @@ class OrderController extends Controller
         $email=$params['email'];
         $name=$params['customer']['first_name'].' '.$params['customer']['last_name'];
         $payment_gateway_names=$params['payment_gateway_names'];
-        
+        $subject="";
         if (in_array(self::DEPOSITO_TRANSFERENCIA,$payment_gateway_names))
         {
              $template=$this->renderView(
@@ -96,7 +96,7 @@ class OrderController extends Controller
                     )
                 );
              
-             
+             $subject='ProGravity: Hola '.$name.' ¡Datos Bancarios para su Compra!';
         }elseif (in_array(self::PAGO_EN_EFECTIVO,$payment_gateway_names)){
             $template=$this->renderView(
                     'AppBundle:mail:mail_efectivo.html.twig',
@@ -104,12 +104,13 @@ class OrderController extends Controller
                         'name' => $name,
                     )
                 );
+             $subject='ProGravity: Hola '.$name.' ¡Información de Entrega!';
         }else{
             
         }
         
         $message = \Swift_Message::newInstance()
-            ->setSubject('ProGravity: Hola '.$name.' ¡Datos Bancarios para su Compra!')
+            ->setSubject($subject)
             ->setFrom('compras@progravityhealth.com','ProGravity Health')
             ->setTo($email)
             ->setBody(
