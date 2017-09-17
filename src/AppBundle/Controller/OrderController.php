@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class OrderController extends Controller
 {
     const DEPOSITO_TRANSFERENCIA = 'Deposito o Transferencia Bancaria';
+    const PAGO_EN_EFECTIVO ='Pago en Efectivo - (Abona con un 5% de descuento)';
     /**
      * Lists all order entities.
      *
@@ -88,18 +89,21 @@ class OrderController extends Controller
         
         if (in_array(self::DEPOSITO_TRANSFERENCIA,$payment_gateway_names))
         {
-             var_dump("se eligfio deposito");
-             
              $template=$this->renderView(
                     'AppBundle:mail:mail_deposit.html.twig',
                     array(
                         'name' => $name,
-                        //'units'=>$units,
-                        //'shipment_text' => $mailing_settings
                     )
                 );
              
              
+        }elseif (in_array(self::PAGO_EN_EFECTIVO,$payment_gateway_names)){
+            $template=$this->renderView(
+                    'AppBundle:mail:mail_efectivo.html.twig',
+                    array(
+                        'name' => $name,
+                    )
+                );
         }else{
             
         }
