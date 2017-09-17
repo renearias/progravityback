@@ -22,7 +22,12 @@ order_add:
     path:     /add
     defaults: { _controller: "AppBundle:Order:add" }
     methods:  [GET, POST]
-
+    
+order_mail:
+    path:     /mail
+    defaults: { _controller: "AppBundle:Order:mail" }
+    methods:  [GET, POST]
+    
 order_edit:
     path:     /{id}/edit
     defaults: { _controller: "AppBundle:Order:edit" }
